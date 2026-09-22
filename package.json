@@ -1,0 +1,25 @@
+{
+  "name": "kt01-csv-filter",
+  "version": "1.0.0",
+  "description": "kt1 cli csv filter",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "nodejs",
+    "cli",
+    "csv",
+    "streams",
+    "dotenv"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
