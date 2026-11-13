@@ -9,6 +9,7 @@
 | КТ3 | REST API блога: Prisma ORM, SQLite, пользователи, посты и теги | [kt03](./kt03/) |
 | КТ4 | JWT, bcrypt, RBAC, Helmet, rate limiting, Jest/Supertest | [kt04](./kt04/) |
 | КТ5 | Socket.IO: JWT-чат, комнаты, онлайн-статусы, Prisma | [kt05](./kt05/) |
+| КТ6 | TaskFlow: PostgreSQL, Redis, Docker Compose, JWT, Swagger, тесты | [kt06](./kt06/) |
 
 ## Запуск КТ1
 
@@ -73,5 +74,17 @@ npm start
 ```
 
 HTTP + Socket.IO: `http://localhost:3005`. Подробнее: [kt05/README.md](./kt05/README.md). Проверка: `npm test` (отдельная тестовая БД).
+
+## Запуск КТ6
+
+```bash
+cd kt06
+cp .env.example .env
+# Настройте пароли и разные JWT-секреты в .env.
+docker compose up --build -d
+docker compose exec app npm test
+```
+
+API: `http://localhost:3006`, Swagger: `/api/docs/`. Подробнее: [kt06/README.md](./kt06/README.md). Публичный деплой требует отдельного VPS/хостинга.
 
 **Важно:** выполнять команды из папки соответствующей КТ. Локальные `.env`, базы данных и `node_modules` не коммитятся.
