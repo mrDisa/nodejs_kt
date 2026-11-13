@@ -1,0 +1,21 @@
+{
+  "name": "kt02-products-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "REST API for product catalog",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "multer": "^2.0.2"
+  }
+}
