@@ -8,6 +8,7 @@
 | КТ2 | REST API товаров: CRUD, Joi, Multer, фильтрация | [kt02](./kt02/) |
 | КТ3 | REST API блога: Prisma ORM, SQLite, пользователи, посты и теги | [kt03](./kt03/) |
 | КТ4 | JWT, bcrypt, RBAC, Helmet, rate limiting, Jest/Supertest | [kt04](./kt04/) |
+| КТ5 | Socket.IO: JWT-чат, комнаты, онлайн-статусы, Prisma | [kt05](./kt05/) |
 
 ## Запуск КТ1
 
@@ -58,5 +59,19 @@ npm test
 ```
 
 API: `http://localhost:3004`. Подробнее: [kt04/README.md](./kt04/README.md).
+
+## Запуск КТ5
+
+```bash
+cd kt05
+npm install
+cp .env.example .env
+# Замените оба JWT-секрета в .env на разные случайные значения.
+npx prisma migrate deploy
+npx prisma generate
+npm start
+```
+
+HTTP + Socket.IO: `http://localhost:3005`. Подробнее: [kt05/README.md](./kt05/README.md). Проверка: `npm test` (отдельная тестовая БД).
 
 **Важно:** выполнять команды из папки соответствующей КТ. Локальные `.env`, базы данных и `node_modules` не коммитятся.

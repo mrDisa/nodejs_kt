@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  name         String
+  passwordHash String
+  role         Role          @default(USER)
+  tokenVersion Int           @default(0)
+  createdAt    DateTime      @default(now())
+  posts        Post[]
+  messages     ChatMessage[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  tags      Tag[]
+
+  @@index([authorId])
+  @@index([createdAt])
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  posts Post[]
+}
+
+model ChatMessage {
+  id        Int      @id @default(autoincrement())
+  content   String
+  room      String?
+  createdAt DateTime @default(now())
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([authorId])
+  @@index([room, createdAt])
+}
+
+enum Role {
+  USER
+  MODERATOR
+  ADMIN
+}
